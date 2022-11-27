@@ -1,5 +1,7 @@
 $fn = 128;
 
+small_printbed = true;
+
 pixel_distance = 10;
 pixel_wall = 0.8;
 
@@ -113,6 +115,15 @@ module FrontPanelWithHoles() {
       }
     }
   };
+}
+
+if (small_printbed) {
+  intersection() {
+    FrontPanelWithHoles();
+    translate([- 30, - 10, 0])cube([16 * pixel_distance + pixel_wall / 2+30, 400, 8]);
+  }
+} else {
+  FrontPanelWithHoles();
 }
 
 
