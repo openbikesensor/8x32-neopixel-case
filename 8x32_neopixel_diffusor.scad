@@ -117,14 +117,18 @@ module FrontPanelWithHoles() {
   };
 }
 
-if (small_printbed) {
-  intersection() {
+  if (small_printbed) {
+    intersection() {
+      FrontPanelWithHoles();
+      translate([- 30, - 10, 0])cube([16 * pixel_distance + pixel_wall / 2 + 30, 400, 8]);
+    }
+    translate([16*pixel_distance-padding,8*pixel_distance+2*padding+5])mirror([1,0,0])intersection() {
+      FrontPanelWithHoles();
+      translate([- 30, - 10, 0])cube([16 * pixel_distance + pixel_wall / 2 + 30, 400, 8]);
+    }
+  } else {
     FrontPanelWithHoles();
-    translate([- 30, - 10, 0])cube([16 * pixel_distance + pixel_wall / 2+30, 400, 8]);
   }
-} else {
-  FrontPanelWithHoles();
-}
 
 
 //ScrewConnector(false);
